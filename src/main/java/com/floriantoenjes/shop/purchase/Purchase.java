@@ -1,39 +1,40 @@
 package com.floriantoenjes.shop.purchase;
 
 import com.floriantoenjes.shop.core.BaseEntity;
-import com.floriantoenjes.shop.product.Product;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
+@Component
 @Entity
-public class Purchase extends BaseEntity{
-    @ManyToOne
-    private Product product;
-
-    private Long quantity;
+public class Purchase extends BaseEntity {
+    @OneToMany
+    private List<ProductPurchase> productPurchases;
 
     public Purchase() {
+        productPurchases = new ArrayList<>();
     }
 
-    public Purchase(Product product, Long quantity) {
-        this.product = product;
-        this.quantity = quantity;
+    public List<ProductPurchase> getProductPurchases() {
+        return productPurchases;
     }
 
-    public Product getProduct() {
-        return product;
+    public void setProductPurchases(List<ProductPurchase> productPurchases) {
+        this.productPurchases = productPurchases;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public boolean addPurchase(ProductPurchase productPurchase) {
+        return productPurchases.add(productPurchase);
     }
 
-    public Long getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Long quantity) {
-        this.quantity = quantity;
+    public double getSubTotal() {
+        double subTotal = 0;
+        for (ProductPurchase productPurchase : productPurchases) {
+            subTotal += productPurchase.getProduct().getPrice();
+        }
+        return subTotal;
     }
 }

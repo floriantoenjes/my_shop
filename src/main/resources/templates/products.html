@@ -18,10 +18,10 @@
             <span th:text="${product.name}"></span>
             <span th:text="${product.price} + ' €'"></span>
             <a th:href="@{/product/detail/} + ${product.id}">Detail</a>
-            <form th:action="@{/cart/add}" method="post">
+            <form th:action="@{/purchase/add}" method="post">
                 <input type="hidden" name="id" th:value="${product.id}"/>
                 <input type="text" name="quantity"/>
-                <button type="submit">Add</button>
+                <button type="submit">Add to cart</button>
             </form>
         </li>
     </ul>
