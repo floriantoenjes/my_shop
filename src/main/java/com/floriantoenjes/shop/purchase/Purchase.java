@@ -1,6 +1,7 @@
 package com.floriantoenjes.shop.purchase;
 
 import com.floriantoenjes.shop.core.BaseEntity;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Component
 @Entity
+@Scope("session")
 public class Purchase extends BaseEntity {
     @OneToMany
     private List<ProductPurchase> productPurchases;
