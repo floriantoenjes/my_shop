@@ -5,11 +5,15 @@ import com.floriantoenjes.shop.product.Product;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class ProductPurchase extends BaseEntity{
     @ManyToOne
     private Product product;
+
+    @ManyToOne
+    Purchase purchase;
 
     private Long quantity;
 

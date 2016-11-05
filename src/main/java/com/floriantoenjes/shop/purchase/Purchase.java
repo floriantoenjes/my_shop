@@ -13,7 +13,7 @@ import java.util.List;
 @Entity
 @Scope("session")
 public class Purchase extends BaseEntity {
-    @OneToMany
+    @OneToMany(mappedBy = "purchase")
     private List<ProductPurchase> productPurchases;
 
     public Purchase() {
