@@ -1,12 +1,89 @@
 package com.floriantoenjes.shop.user;
 
+import com.floriantoenjes.shop.address.Address;
 import com.floriantoenjes.shop.core.BaseEntity;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import java.util.Collection;
 
 @Entity
-public class User extends BaseEntity{
+public class User extends BaseEntity implements UserDetails{
     private String email;
 
     private String password;
+
+    @OneToOne
+    private Address billingAddress;
+
+    @OneToOne
+    private Address shippingAddress;
+
+    public User() {
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Address getBillingAddress() {
+        return billingAddress;
+    }
+
+    public void setBillingAddress(Address billingAddress) {
+        this.billingAddress = billingAddress;
+    }
+
+    public Address getShippingAddress() {
+        return shippingAddress;
+    }
+
+    public void setShippingAddress(Address shippingAddress) {
+        this.shippingAddress = shippingAddress;
+    }
 }
