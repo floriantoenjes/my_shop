@@ -5,7 +5,10 @@
     <h1>Products in Cart</h1>
     <ul>
         <li th:each="ppurchase : ${ppurchases}">
-            <span text="${ppurchase.product.name}"></span>
+            <span th:text="${ppurchase.product.name}"></span>
+            <p>
+                Quantity:<span th:text="${ppurchase.quantity}"></span>
+            </p>
         </li>
     </ul>
 </body>

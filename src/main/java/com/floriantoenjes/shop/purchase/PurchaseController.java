@@ -33,7 +33,7 @@ public class PurchaseController {
 
     @RequestMapping("cart")
     public String showCart(Model model) {
-
+        model.addAttribute("ppurchases", purchase.getProductPurchases());
         return "cart";
     }
 }
