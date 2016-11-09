@@ -32,11 +32,11 @@ public class Purchase extends BaseEntity {
         return productPurchases.add(productPurchase);
     }
 
-    public double getSubTotal() {
+    public String getSubTotal() {
         double subTotal = 0;
         for (ProductPurchase productPurchase : productPurchases) {
             subTotal += productPurchase.getProduct().getPrice() * productPurchase.getQuantity();
         }
-        return subTotal;
+        return String.format("%.2f", subTotal);
     }
 }
