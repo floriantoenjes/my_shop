@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout :: head"></head>
 <body>
+    <ul th:replace="layout :: nav"></ul>
     <h1 th:text="${product.name}"></h1>
     <label for="price">Price:</label>
     <span id="price" th:text="${product.price} + ' €'"></span>

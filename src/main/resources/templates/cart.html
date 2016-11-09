@@ -2,14 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout :: head"></head>
 <body>
+    <ul th:replace="layout :: nav"></ul>
     <h1>Products in Cart</h1>
     <ul>
         <li th:each="ppurchase : ${ppurchases}">
             <span th:text="${ppurchase.product.name}"></span>
             <p>
                 Quantity:<span th:text="${ppurchase.quantity}"></span>
+                Price: <span th:text="${ppurchase.quantity * ppurchase.product.price}"></span> €
             </p>
         </li>
     </ul>
+    <a href="#">Checkout</a>
 </body>
 </html>

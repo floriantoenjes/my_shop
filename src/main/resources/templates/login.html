@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout :: head"></head>
 <body>
+    <ul th:replace="layout :: nav"></ul>
     <h1>Login</h1>
     <form th:action="@{/login}" method="post" th:object="${user}">
         <input th:field="*{username}" placeholder="E-Mail"> </input>

@@ -2,7 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout :: head"></head>
 <body>
-    <h1>Cart</h1>
+    <ul th:replace="layout :: nav"></ul>
+    <h2>Cart</h2>
     <p>
         Sub total: <span th:text="${subTotal}"></span> €
     </p>

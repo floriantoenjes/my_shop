@@ -9,6 +9,13 @@
     <link rel="stylesheet" th:href="@{/css/main.css}"/>
 </head>
 <body>
-
+    <ul th:fragment="nav">
+        <li>
+            <a th:href="@{/product/}">Products</a>
+        </li>
+        <li>
+            <a th:href="@{/purchase/cart}">Cart</a>
+        </li>
+    </ul>
 </body>
 </html>
