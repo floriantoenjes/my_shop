@@ -5,6 +5,7 @@ import com.floriantoenjes.shop.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,5 +29,11 @@ public class PurchaseController {
         purchase.addProductPurchase(productPurchase);
 
         return "redirect:/product/";
+    }
+
+    @RequestMapping("cart")
+    public String showCart(Model model) {
+
+        return "cart";
     }
 }

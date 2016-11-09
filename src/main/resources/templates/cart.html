@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body>
+    <h1>Products in Cart</h1>
+    <ul>
+        <li th:each="ppurchase : ${ppurchases}">
+            <span text="${ppurchase.product.name}"></span>
+        </li>
+    </ul>
+</body>
+</html>
