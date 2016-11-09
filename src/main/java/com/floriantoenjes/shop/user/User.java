@@ -11,7 +11,7 @@ import java.util.Collection;
 
 @Entity
 public class User extends BaseEntity implements UserDetails{
-    private String email;
+    private String username;
 
     private String password;
 
@@ -34,10 +34,6 @@ public class User extends BaseEntity implements UserDetails{
         return password;
     }
 
-    @Override
-    public String getUsername() {
-        return email;
-    }
 
     @Override
     public boolean isAccountNonExpired() {
@@ -59,12 +55,12 @@ public class User extends BaseEntity implements UserDetails{
         return true;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setPassword(String password) {

@@ -28,14 +28,14 @@ public class Purchase extends BaseEntity {
         this.productPurchases = productPurchases;
     }
 
-    public boolean addPurchase(ProductPurchase productPurchase) {
+    public boolean addProductPurchase(ProductPurchase productPurchase) {
         return productPurchases.add(productPurchase);
     }
 
     public double getSubTotal() {
         double subTotal = 0;
         for (ProductPurchase productPurchase : productPurchases) {
-            subTotal += productPurchase.getProduct().getPrice();
+            subTotal += productPurchase.getProduct().getPrice() * productPurchase.getQuantity();
         }
         return subTotal;
     }

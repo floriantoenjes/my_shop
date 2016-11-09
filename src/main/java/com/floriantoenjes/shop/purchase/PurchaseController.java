@@ -25,7 +25,7 @@ public class PurchaseController {
         Product product = productService.findOne(productId);
         ProductPurchase productPurchase = new ProductPurchase(product, quantity);
 
-        purchase.addPurchase(productPurchase);
+        purchase.addProductPurchase(productPurchase);
 
         return "redirect:/product/";
     }
