@@ -24,9 +24,19 @@ public class PurchaseController {
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String addProduct(@RequestParam("id") Long productId, @RequestParam("quantity") Long quantity) {
         Product product = productService.findOne(productId);
-        ProductPurchase productPurchase = new ProductPurchase(product, quantity);
+        boolean alreadyInPurchase = false;
 
-        purchase.addProductPurchase(productPurchase);
+        for (ProductPurchase pp : purchase.getProductPurchases()) {
+            if (product.getName().equals(pp.getProduct().getName())) {
+                pp.setQuantity(pp.getQuantity() + quantity);
+                alreadyInPurchase = true;
+            }
+        }
+
+        if (!alreadyInPurchase) {
+            ProductPurchase productPurchase = new ProductPurchase(product, quantity);
+            purchase.addProductPurchase(productPurchase);
+        }
 
         return "redirect:/product/";
     }
