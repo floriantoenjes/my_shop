@@ -8,7 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
-public class ProductPurchase extends BaseEntity{
+public class ProductPurchase extends BaseEntity {
     @ManyToOne
     private Product product;
 

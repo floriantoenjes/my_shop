@@ -47,4 +47,14 @@ public class PurchaseController {
         model.addAttribute("subTotal", purchase.getSubTotal());
         return "cart";
     }
+
+    @RequestMapping(value = "update", method = RequestMethod.POST)
+    public String updateCart(@RequestParam("productId") Long productId, @RequestParam("newQuantity") Long newQuantity) {
+        for (ProductPurchase productPurchase : purchase.getProductPurchases()) {
+            if (productPurchase.getProduct().getId() == productId) {
+                productPurchase.setQuantity(newQuantity);
+            }
+        }
+        return "redirect:/purchase/cart";
+    }
 }

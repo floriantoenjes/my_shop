@@ -8,7 +8,12 @@
         <li th:each="ppurchase : ${ppurchases}">
             <span th:text="${ppurchase.product.name}"></span>
             <p>
-                Quantity:<span th:text="${ppurchase.quantity}"></span>
+                Quantity:
+                <form th:action="@{/purchase/update}" method="post">
+                    <input type="hidden" name="productId" th:value="${ppurchase.product.id}"/>
+                    <input type="text" name="newQuantity" th:value="${ppurchase.quantity}"/>
+                    <button type="submit">Update</button>
+                </form>
                 Price: <span th:text="${ppurchase.quantity * ppurchase.product.price}"></span> €
             </p>
         </li>
