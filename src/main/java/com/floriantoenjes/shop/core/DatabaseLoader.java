@@ -3,6 +3,7 @@ package com.floriantoenjes.shop.core;
 
 import com.floriantoenjes.shop.product.Product;
 import com.floriantoenjes.shop.product.ProductRepository;
+import com.floriantoenjes.shop.user.Role;
 import com.floriantoenjes.shop.user.User;
 import com.floriantoenjes.shop.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ public class DatabaseLoader implements ApplicationRunner{
         User user1 = new User();
         user1.setUsername("user");
         user1.setPassword("password");
+        user1.setRole(new Role("ROLE_USER"));
         userRepository.save(user1);
 
         Product fork = new Product("Fork", 5.0);

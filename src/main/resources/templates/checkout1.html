@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="layout :: head"></head>
+<body>
+    <p>Please enter your address:</p>
+    <form th:action="@{/checkout/checkout2}" method="post" th:object="${address}">
+        <label for="name">Name:</label>
+        <input type="text" id="name" th:field="*{name}"/>
+        <label type="text" for="street">Street:</label>
+        <input type="text" id="street" th:field="*{street}"/>
+        <label for="number">Number:</label>
+        <input type="text" id="number" th:field="*{number}"/>
+        <label for="city">City:</label>
+        <input type="text" id="city" th:field="*{city}"/>
+        <label for="zip">Zip:</label>
+        <input type="text" id="zip" th:field="*{zip}"/>
+        <button type="submit">Create address</button>
+    </form>
+</body>
+</html>

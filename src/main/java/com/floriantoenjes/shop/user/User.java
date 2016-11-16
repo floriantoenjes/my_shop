@@ -3,9 +3,12 @@ package com.floriantoenjes.shop.user;
 import com.floriantoenjes.shop.address.Address;
 import com.floriantoenjes.shop.core.BaseEntity;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import java.util.Collection;
 
@@ -15,18 +18,21 @@ public class User extends BaseEntity implements UserDetails{
 
     private String password;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Address billingAddress;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Address shippingAddress;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    Role role;
 
     public User() {
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return AuthorityUtils.createAuthorityList(role.getName());
     }
 
     @Override
@@ -81,5 +87,13 @@ public class User extends BaseEntity implements UserDetails{
 
     public void setShippingAddress(Address shippingAddress) {
         this.shippingAddress = shippingAddress;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
