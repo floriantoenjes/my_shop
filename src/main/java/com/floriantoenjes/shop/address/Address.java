@@ -1,8 +1,10 @@
 package com.floriantoenjes.shop.address;
 
 import com.floriantoenjes.shop.core.BaseEntity;
+import com.floriantoenjes.shop.user.User;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Address extends BaseEntity {
@@ -11,6 +13,9 @@ public class Address extends BaseEntity {
     private String number;
     private String city;
     private String zip;
+
+    @ManyToOne
+    private User user;
 
     public Address() {
 
@@ -54,5 +59,13 @@ public class Address extends BaseEntity {
 
     public void setZip(String zip) {
         this.zip = zip;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

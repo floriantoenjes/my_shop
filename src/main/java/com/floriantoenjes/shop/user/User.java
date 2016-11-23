@@ -6,11 +6,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 public class User extends BaseEntity implements UserDetails{
@@ -21,13 +20,14 @@ public class User extends BaseEntity implements UserDetails{
     @OneToOne(cascade = CascadeType.ALL)
     private Address billingAddress;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Address shippingAddress;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Address> shippingAddresses;
 
     @ManyToOne(cascade = CascadeType.ALL)
     Role role;
 
     public User() {
+        shippingAddresses = new ArrayList<>();
     }
 
     @Override
@@ -81,12 +81,18 @@ public class User extends BaseEntity implements UserDetails{
         this.billingAddress = billingAddress;
     }
 
-    public Address getShippingAddress() {
-        return shippingAddress;
+    public List<Address> getShippingAddresses() {
+        return shippingAddresses;
     }
 
-    public void setShippingAddress(Address shippingAddress) {
-        this.shippingAddress = shippingAddress;
+    public void setShippingAddresses(List<Address> shippingAddresses) {
+        this.shippingAddresses = shippingAddresses;
+        shippingAddresses.forEach(a -> a.setUser(this));
+    }
+
+    public void addShippingAddress(Address address) {
+        this.shippingAddresses.add(address);
+        address.setUser(this);
     }
 
     public Role getRole() {

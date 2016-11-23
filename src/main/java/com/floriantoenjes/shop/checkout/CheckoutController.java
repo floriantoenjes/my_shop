@@ -24,15 +24,21 @@ public class CheckoutController {
 
     @RequestMapping("checkout1")
     public String checkout1(Model model) {
-        model.addAttribute("address", new Address());
-        return "checkout1";
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByUsername(username);
+        if (user.getShippingAddresses().size() == 0) {
+            model.addAttribute("address", new Address());
+            return "checkout1";
+        } else {
+            return "redirect:/checkout/checkout2";
+        }
     }
 
     @RequestMapping(value = "checkout2", method = RequestMethod.POST)
     public String addAddress(Address address) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userRepository.findByUsername(username);
-        user.setShippingAddress(address);
+        user.addShippingAddress(address);
         userRepository.save(user);
         return "redirect:/checkout/checkout2";
     }
@@ -45,7 +51,9 @@ public class CheckoutController {
         model.addAttribute("ppurchases", purchase.getProductPurchases());
         model.addAttribute("subTotal", purchase.getSubTotal());
 
-        model.addAttribute("sAddress", user.getShippingAddress());
+        model.addAttribute("sAddresses", user.getShippingAddresses());
+
+        model.addAttribute("sAddress", user.getShippingAddresses());
 
         return "checkout2";
     }

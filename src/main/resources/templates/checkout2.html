@@ -17,8 +17,18 @@
         Sub Total: <span th:text="${subTotal}"></span> €
     </p>
     <p>
-        Shipping address:
-
+        Choose a shipping address:
     </p>
+    <form th:action="@{/checkout/checkout3}" method="post">
+        <input type="radio" th:each="sAddress : ${sAddresses}" th:value="${sAddress.id}" name="sAddress">
+            <span th:text="${sAddress.name}"></span><br/>
+            <span th:text="${sAddress.street} "></span>
+            <span th:text="${sAddress.number}"></span><br/>
+            <span th:text="${sAddress.zip}, "></span>
+            <span th:text="${sAddress.city}"></span><br/>
+        </input>
+        <button type="submit">Continue</button>
+    </form>
+
 </body>
 </html>
