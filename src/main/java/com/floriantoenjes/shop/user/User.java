@@ -2,6 +2,7 @@ package com.floriantoenjes.shop.user;
 
 import com.floriantoenjes.shop.address.Address;
 import com.floriantoenjes.shop.core.BaseEntity;
+import com.floriantoenjes.shop.purchase.Purchase;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,6 +26,9 @@ public class User extends BaseEntity implements UserDetails{
 
     @ManyToOne(cascade = CascadeType.ALL)
     Role role;
+
+    @OneToMany(mappedBy = "user")
+    List<Purchase> purchases;
 
     public User() {
         shippingAddresses = new ArrayList<>();
@@ -90,9 +94,9 @@ public class User extends BaseEntity implements UserDetails{
         shippingAddresses.forEach(a -> a.setUser(this));
     }
 
-    public void addShippingAddress(Address address) {
-        this.shippingAddresses.add(address);
+    public boolean addShippingAddress(Address address) {
         address.setUser(this);
+        return shippingAddresses.add(address);
     }
 
     public Role getRole() {
@@ -101,5 +105,17 @@ public class User extends BaseEntity implements UserDetails{
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public List<Purchase> getPurchases() {
+        return purchases;
+    }
+
+    public void setPurchases(List<Purchase> purchases) {
+        this.purchases = purchases;
+    }
+
+    public boolean addPurchase(Purchase purchase) {
+        return purchases.add(purchase);
     }
 }

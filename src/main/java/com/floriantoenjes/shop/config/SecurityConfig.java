@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                     .loginPage("/login")
                     .permitAll()
-                    .successHandler(loginSuccessHandler())
+//                    .successHandler(loginSuccessHandler())
                     .failureHandler(loginFailureHandler())
                     .and()
                 .logout()
@@ -50,11 +50,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable();
     }
 
-    private AuthenticationSuccessHandler loginSuccessHandler() {
-        return (request, response, authentication) -> response.sendRedirect("/product/");
-    }
+//    private AuthenticationSuccessHandler loginSuccessHandler() {
+//        return (request, response, authentication) -> response.sendRedirect("/product/");
+//    }
 
     private AuthenticationFailureHandler loginFailureHandler() {
-        return ((request, response, exception) -> response.sendRedirect("/login"));
+        return ((request, response, exception) -> {
+            response.sendRedirect("/login");
+        });
     }
 }

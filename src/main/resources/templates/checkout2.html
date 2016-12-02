@@ -19,15 +19,15 @@
     <p>
         Choose a shipping address:
     </p>
-    <form th:action="@{/checkout/checkout3}" method="post">
-        <input type="radio" th:each="sAddress : ${sAddresses}" th:value="${sAddress.id}" name="sAddress">
+    <form th:action="@{/checkout/checkout2}" method="post" th:object="${shippingAddress}">
+        <input type="radio" th:each="sAddress : ${sAddresses}" th:field="*{id}" th:value="${sAddress.id}" th:checked="${sAddress.defaultAddress}">
             <span th:text="${sAddress.name}"></span><br/>
             <span th:text="${sAddress.street} "></span>
             <span th:text="${sAddress.number}"></span><br/>
-            <span th:text="${sAddress.zip}, "></span>
+            <span th:text="${sAddress.zip} + ','"></span>
             <span th:text="${sAddress.city}"></span><br/>
         </input>
-        <button type="submit">Continue</button>
+        <button type="submit">Confirm Purchase</button>
     </form>
 
 </body>

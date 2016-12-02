@@ -13,6 +13,7 @@ public class Address extends BaseEntity {
     private String number;
     private String city;
     private String zip;
+    private boolean defaultAddress;
 
     @ManyToOne
     private User user;
@@ -67,5 +68,13 @@ public class Address extends BaseEntity {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public boolean isDefaultAddress() {
+        return defaultAddress;
+    }
+
+    public void setDefaultAddress(boolean defaultAddress) {
+        this.defaultAddress = defaultAddress;
     }
 }

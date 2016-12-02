@@ -2,6 +2,7 @@ package com.floriantoenjes.shop.checkout;
 
 import com.floriantoenjes.shop.address.Address;
 import com.floriantoenjes.shop.purchase.Purchase;
+import com.floriantoenjes.shop.purchase.PurchaseService;
 import com.floriantoenjes.shop.user.User;
 import com.floriantoenjes.shop.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ public class CheckoutController {
     UserRepository userRepository;
 
     @Autowired
+    PurchaseService purchaseService;
+
+    @Autowired
     Purchase purchase;
 
     @RequestMapping("checkout1")
@@ -34,10 +38,14 @@ public class CheckoutController {
         }
     }
 
-    @RequestMapping(value = "checkout2", method = RequestMethod.POST)
+    @RequestMapping(value = "checkout1", method = RequestMethod.POST)
     public String addAddress(Address address) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userRepository.findByUsername(username);
+        if (user.getShippingAddresses().size() == 0) {
+            address.setDefaultAddress(true);
+            user.setBillingAddress(address);
+        }
         user.addShippingAddress(address);
         userRepository.save(user);
         return "redirect:/checkout/checkout2";
@@ -52,10 +60,22 @@ public class CheckoutController {
         model.addAttribute("subTotal", purchase.getSubTotal());
 
         model.addAttribute("sAddresses", user.getShippingAddresses());
+        model.addAttribute("shippingAddress", new Address());
 
-        model.addAttribute("sAddress", user.getShippingAddresses());
 
         return "checkout2";
+    }
+
+    @RequestMapping(value = "checkout2", method = RequestMethod.POST)
+    public String confirmPurchase(Address shippingAddress) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByUsername(username);
+
+        purchase.setUser(user);
+        purchase.setShippingAddress(shippingAddress);
+
+        purchaseService.save(purchase);
+        return "redirect:/";
     }
 
 }

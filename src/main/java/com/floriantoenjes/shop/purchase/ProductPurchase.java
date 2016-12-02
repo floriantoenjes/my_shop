@@ -40,4 +40,12 @@ public class ProductPurchase extends BaseEntity {
     public void setQuantity(Long quantity) {
         this.quantity = quantity;
     }
+
+    public Purchase getPurchase() {
+        return purchase;
+    }
+
+    public void setPurchase(Purchase purchase) {
+        this.purchase = purchase;
+    }
 }

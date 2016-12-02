@@ -3,7 +3,7 @@
 <head th:replace="layout :: head"></head>
 <body>
     <p>Please enter your address:</p>
-    <form th:action="@{/checkout/checkout2}" method="post" th:object="${address}">
+    <form th:action="@{/checkout/checkout1}" method="post" th:object="${address}">
         <label for="name">Name:</label>
         <input type="text" id="name" th:field="*{name}"/>
         <label type="text" for="street">Street:</label>
