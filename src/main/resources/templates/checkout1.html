@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="layout :: head"></head>
 <body>
+    <ul th:replace="layout :: nav"></ul>
     <p>Please enter your address:</p>
     <form th:action="@{/checkout/checkout1}" method="post" th:object="${address}">
         <label for="name">Name:</label>

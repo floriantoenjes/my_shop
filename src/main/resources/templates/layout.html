@@ -16,11 +16,16 @@
         <li>
             <a th:href="@{/purchase/cart}">Cart</a>
         </li>
-        <li>
+        <li sec:authorize="!isAuthenticated()">
             <a th:href="@{/login}">Login</a>
         </li>
-        <li>
+        <li sec:authorize="isAuthenticated()">
             <a th:href="@{/logout}">Logout</a>
+        </li>
+        <li sec:authorize="isAuthenticated()">
+            <p>
+                Account: <span sec:authentication="name"></span>
+            </p>
         </li>
     </ul>
 </body>
