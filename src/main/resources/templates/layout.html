@@ -28,5 +28,9 @@
             </p>
         </li>
     </ul>
+
+    <div th:fragment="flash" th:if="${flash != null}">
+        <p th:text="${flash.message}"></p>
+    </div>
 </body>
 </html>

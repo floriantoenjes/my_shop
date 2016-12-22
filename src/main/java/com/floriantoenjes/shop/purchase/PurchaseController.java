@@ -2,6 +2,7 @@ package com.floriantoenjes.shop.purchase;
 
 import com.floriantoenjes.shop.product.Product;
 import com.floriantoenjes.shop.product.ProductService;
+import com.floriantoenjes.shop.web.FlashMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("purchase")
@@ -22,9 +24,18 @@ public class PurchaseController {
     ProductService productService;
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String addProduct(@RequestParam("id") Long productId, @RequestParam("quantity") Long quantity) {
+    public String addProduct(@RequestParam("id") Long productId, @RequestParam("quantity") Long quantity,
+                             RedirectAttributes redirectAttributes) {
         Product product = productService.findOne(productId);
         boolean alreadyInPurchase = false;
+
+        Long stockQuantity = product.getStockQuantity();
+        if (stockQuantity < quantity) {
+            redirectAttributes.addFlashAttribute("flash",
+                    new FlashMessage("You can't add more products than are in stock",
+                            FlashMessage.Status.FAILED));
+            return "redirect:/product/";
+        }
 
         for (ProductPurchase pp : purchase.getProductPurchases()) {
             if (product.getName().equals(pp.getProduct().getName())) {
