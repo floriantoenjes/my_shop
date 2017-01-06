@@ -49,6 +49,9 @@ public class PurchaseController {
             purchase.addProductPurchase(productPurchase);
         }
 
+        product.setStockQuantity(product.getStockQuantity() - quantity);
+        productService.save(product);
+
         return "redirect:/product/";
     }
 
