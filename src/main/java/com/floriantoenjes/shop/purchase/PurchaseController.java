@@ -64,9 +64,18 @@ public class PurchaseController {
 
     @RequestMapping(value = "update", method = RequestMethod.POST)
     public String updateCart(@RequestParam("productId") Long productId, @RequestParam("newQuantity") Long newQuantity) {
+        Product product = productService.findOne(productId);
+
         for (ProductPurchase productPurchase : purchase.getProductPurchases()) {
-            if (productPurchase.getProduct().getId() == productId) {
-                productPurchase.setQuantity(newQuantity);
+            if (productPurchase.getProduct().getId() == product.getId()) {
+                Long oldPurchaseQuantity = productPurchase.getQuantity();
+                if (product.getStockQuantity() + oldPurchaseQuantity < newQuantity) {
+
+                } else {
+                    productPurchase.setQuantity(newQuantity);
+                    product.setStockQuantity((product.getStockQuantity() + oldPurchaseQuantity) - newQuantity );
+                    productService.save(product);
+                }
             }
         }
         return "redirect:/purchase/cart";
