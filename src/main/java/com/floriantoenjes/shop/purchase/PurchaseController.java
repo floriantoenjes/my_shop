@@ -32,7 +32,7 @@ public class PurchaseController {
         Long stockQuantity = product.getStockQuantity();
         if (stockQuantity < quantity) {
             redirectAttributes.addFlashAttribute("flash",
-                    new FlashMessage("You can't add more products than are in stock",
+                    new FlashMessage("You cannot add more products than are in stock",
                             FlashMessage.Status.FAILED));
             return "redirect:/product/";
         }
@@ -63,14 +63,16 @@ public class PurchaseController {
     }
 
     @RequestMapping(value = "update", method = RequestMethod.POST)
-    public String updateCart(@RequestParam("productId") Long productId, @RequestParam("newQuantity") Long newQuantity) {
+    public String updateCart(@RequestParam("productId") Long productId, @RequestParam("newQuantity") Long newQuantity,
+                             RedirectAttributes redirectAttributes) {
         Product product = productService.findOne(productId);
 
         for (ProductPurchase productPurchase : purchase.getProductPurchases()) {
             if (productPurchase.getProduct().getId() == product.getId()) {
                 Long oldPurchaseQuantity = productPurchase.getQuantity();
                 if (product.getStockQuantity() + oldPurchaseQuantity < newQuantity) {
-
+                    redirectAttributes.addFlashAttribute("flash", new FlashMessage("You cannot add more products than are in stock",
+                            FlashMessage.Status.FAILED));
                 } else {
                     productPurchase.setQuantity(newQuantity);
                     product.setStockQuantity((product.getStockQuantity() + oldPurchaseQuantity) - newQuantity );
