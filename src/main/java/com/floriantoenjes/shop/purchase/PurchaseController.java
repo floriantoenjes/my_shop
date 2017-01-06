@@ -42,6 +42,7 @@ public class PurchaseController {
         for (ProductPurchase pp : purchase.getProductPurchases()) {
             if (product.getName().equals(pp.getProduct().getName())) {
                 pp.setQuantity(pp.getQuantity() + quantity);
+                pp.getProduct().setStockQuantity(pp.getProduct().getStockQuantity() - quantity);
                 alreadyInPurchase = true;
             }
         }
@@ -50,6 +51,7 @@ public class PurchaseController {
             ProductPurchase productPurchase = new ProductPurchase(product, quantity);
             purchase.addProductPurchase(productPurchase);
         }
+
 
         product.setStockQuantity(product.getStockQuantity() - quantity);
         productService.save(product);
@@ -85,7 +87,6 @@ public class PurchaseController {
         return "redirect:/purchase/cart";
     }
 
-    // ToDo: Empty cart
     @RequestMapping("cart/empty")
     public String emptyCart() {
         for (ProductPurchase productPurchase : purchase.getProductPurchases()) {
