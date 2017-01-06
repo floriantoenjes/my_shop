@@ -83,4 +83,6 @@ public class PurchaseController {
         return "redirect:/purchase/cart";
     }
 
+    // ToDo: Empty cart
+
 }
