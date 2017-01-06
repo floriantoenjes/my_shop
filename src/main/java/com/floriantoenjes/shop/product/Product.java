@@ -10,12 +10,15 @@ public class Product extends BaseEntity {
 
     private Double price;
 
+    private Long stockQuantity;
+
     public Product() {
     }
 
-    public Product(String name, Double price) {
+    public Product(String name, Double price, Long stockQuantity) {
         this.name = name;
         this.price = price;
+        this.stockQuantity = stockQuantity;
     }
 
     public String getName() {
@@ -32,5 +35,13 @@ public class Product extends BaseEntity {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Long getStockQuantity() {
+        return stockQuantity;
+    }
+
+    public void setStockQuantity(Long stockQuantity) {
+        this.stockQuantity = stockQuantity;
     }
 }

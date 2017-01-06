@@ -31,9 +31,9 @@ public class DatabaseLoader implements ApplicationRunner{
         user1.setRole(new Role("ROLE_USER"));
         userRepository.save(user1);
 
-        Product fork = new Product("Fork", 5.0);
-        Product spoon = new Product("Spoon", 6.99);
-        Product knife = new Product("Knife", 3.49);
+        Product fork = new Product("Fork", 5.0, 3L);
+        Product spoon = new Product("Spoon", 6.99, 10L);
+        Product knife = new Product("Knife", 3.49, 15L);
 
         productRepository.save(fork);
         productRepository.save(spoon);
