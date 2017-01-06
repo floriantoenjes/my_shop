@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
+
 @Controller
 @RequestMapping("purchase")
 @Scope("request")
@@ -84,5 +86,15 @@ public class PurchaseController {
     }
 
     // ToDo: Empty cart
+    @RequestMapping("cart/empty")
+    public String emptyCart() {
+        for (ProductPurchase productPurchase : purchase.getProductPurchases()) {
+            Product product = productService.findOne(productPurchase.getProduct().getId());
+            product.setStockQuantity(product.getStockQuantity() + productPurchase.getQuantity());
+            productService.save(product);
+        }
+        purchase.setProductPurchases(new ArrayList<>());
+        return "redirect:/purchase/cart";
+    }
 
 }
