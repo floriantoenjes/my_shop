@@ -74,8 +74,8 @@
       <file leaf-file-name="CheckoutControllerTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/floriantoenjes/shop/checkout/CheckoutControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="33" column="42" lean-forward="true" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
+            <state relative-caret-position="193">
+              <caret line="68" column="42" lean-forward="true" selection-start-line="68" selection-start-column="42" selection-end-line="68" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1497,20 +1497,30 @@
       <option name="project" value="LOCAL" />
       <updated>1483804087586</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Started implementing checkout1 without user address test">
+      <created>1483805875161</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1483805875161</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TestHistory">
     <history-entry file="All_in_my_shop_test - 2017.01.07 at 17h 16m 38s.xml">
       <configuration name="All in my_shop_test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CheckoutControllerTest - 2017.01.07 at 17h 11m 35s.xml">
-      <configuration name="CheckoutControllerTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="CheckoutControllerTest - 2017.01.07 at 17h 11m 54s.xml">
       <configuration name="CheckoutControllerTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="CheckoutControllerTest - 2017.01.07 at 17h 17m 17s.xml">
+      <configuration name="CheckoutControllerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CheckoutControllerTest - 2017.01.07 at 17h 18m 12s.xml">
+      <configuration name="CheckoutControllerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CheckoutControllerTest - 2017.01.07 at 17h 18m 44s.xml">
       <configuration name="CheckoutControllerTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="CheckoutControllerTest_checkout1WithAddressRedirectsToCheckout2Page - 2017.01.07 at 17h 14m 34s.xml">
@@ -1521,9 +1531,6 @@
     </history-entry>
     <history-entry file="CheckoutControllerTest_checkout1WithAddressRedirectsToCheckout2Page - 2017.01.07 at 17h 17m 05s.xml">
       <configuration name="CheckoutControllerTest.checkout1WithAddressRedirectsToCheckout2Page" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CheckoutControllerTest_checkout1WithoutAddressReturnsCheckout1Page - 2017.01.07 at 17h 11m 36s.xml">
-      <configuration name="CheckoutControllerTest.checkout1WithoutAddressReturnsCheckout1Page" configurationId="JUnit" />
     </history-entry>
     <history-entry file="CheckoutControllerTest_checkout1WithoutAddressReturnsCheckout1Page - 2017.01.07 at 17h 15m 03s.xml">
       <configuration name="CheckoutControllerTest.checkout1WithoutAddressReturnsCheckout1Page" configurationId="JUnit" />
@@ -1554,7 +1561,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997833" sideWeight="0.5042644" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.312026" sideWeight="0.49573562" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.312026" sideWeight="0.49573562" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.49573562" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1623,8 +1630,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added ability to change quantity" />
-    <MESSAGE value="Added first checkout steps" />
     <MESSAGE value="Implemented multiple shipping addresses" />
     <MESSAGE value="Implemented PurchaseRepo and Service, changed SecurityConfig for better login handling" />
     <MESSAGE value="Added stockQuantity to product and &quot;detail template&quot;" />
@@ -1648,7 +1653,9 @@
     <MESSAGE value="Reimplemented updateCart test" />
     <MESSAGE value="Started implementing checkoutController tests" />
     <MESSAGE value="Changed User contructor. Implemented first checkoutController test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed User contructor. Implemented first checkoutController test" />
+    <MESSAGE value="Started implementing checkout1WithoutAddressRedirectsToCheckout2Page test" />
+    <MESSAGE value="Started implementing checkout1 without user address test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started implementing checkout1 without user address test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2061,8 +2068,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/floriantoenjes/shop/checkout/CheckoutControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="33" column="42" lean-forward="true" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
+        <state relative-caret-position="193">
+          <caret line="68" column="42" lean-forward="true" selection-start-line="68" selection-start-column="42" selection-end-line="68" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
