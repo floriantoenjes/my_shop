@@ -46,6 +46,8 @@ public class PurchaseControllerTest {
                 .build();
     }
 
+    // ToDo: Add tests to ensure correct stock quantity
+
     @Test
     public void addProductToCartTest() throws Exception {
         Product product = mockProduct();

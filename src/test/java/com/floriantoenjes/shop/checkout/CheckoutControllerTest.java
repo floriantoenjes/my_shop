@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -72,13 +73,16 @@ public class CheckoutControllerTest {
     }
 
     @Test
-    public void addAddress() throws Exception {
-
+    public void addAddressTest() throws Exception {
+        mockMvc.perform(post("/checkout/checkout1"));
+        // ToDo: Declare all the parameters for an address here.
     }
 
     @Test
-    public void checkout2() throws Exception {
-
+    public void checkout2Test() throws Exception {
+        mockMvc.perform(get("/checkout/checkout2"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("checkout2"));
     }
 
     @Test
