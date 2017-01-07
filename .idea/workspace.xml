@@ -83,8 +83,8 @@
       <file leaf-file-name="ProductController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/floriantoenjes/shop/product/ProductController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state relative-caret-position="298">
+              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -93,12 +93,23 @@
       <file leaf-file-name="ProductControllerTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/floriantoenjes/shop/product/ProductControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+            <state relative-caret-position="179">
+              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#924#925#0" expanded="true" />
-                <element signature="e#1008#1009#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProductService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/floriantoenjes/shop/product/ProductService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="20" column="26" lean-forward="false" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+              <folding>
+                <element signature="e#501#502#0" expanded="true" />
+                <element signature="e#553#554#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -925,7 +936,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ProductControllerTest.viewProductsTest">
+  <component name="RunManager" selected="JUnit.ProductControllerTest.viewProductDetailsTest">
     <configuration default="false" name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -959,6 +970,32 @@
       <option name="PACKAGE_NAME" value="com.floriantoenjes.shop.product" />
       <option name="MAIN_CLASS_NAME" value="com.floriantoenjes.shop.product.ProductControllerTest" />
       <option name="METHOD_NAME" value="viewProductsTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="ProductControllerTest.viewProductDetailsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.floriantoenjes.shop.product.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="my_shop_test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.floriantoenjes.shop.product" />
+      <option name="MAIN_CLASS_NAME" value="com.floriantoenjes.shop.product.ProductControllerTest" />
+      <option name="METHOD_NAME" value="viewProductDetailsTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -1176,14 +1213,16 @@
       <listeners />
       <method />
     </configuration>
-    <list size="2">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Application.Application" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.ProductControllerTest.viewProductsTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.ProductControllerTest.viewProductDetailsTest" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.ProductControllerTest.viewProductsTest" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Application" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.ProductControllerTest.viewProductDetailsTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.ProductControllerTest.viewProductsTest" />
+        <item index="2" class="java.lang.String" itemvalue="Application.Application" />
       </list>
     </recent_temporary>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -1393,20 +1432,45 @@
       <option name="project" value="LOCAL" />
       <updated>1483777419515</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Implemented first ProductController test">
+      <created>1483778091624</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1483778091624</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ProductControllerTest_viewProductsTest - 2017.01.07 at 09h 30m 14s.xml">
-      <configuration name="ProductControllerTest.viewProductsTest" configurationId="JUnit" />
+    <history-entry file="ProductControllerTest_viewProductDetailsTest - 2017.01.07 at 09h 53m 35s.xml">
+      <configuration name="ProductControllerTest.viewProductDetailsTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProductControllerTest_viewProductsTest - 2017.01.07 at 09h 30m 40s.xml">
-      <configuration name="ProductControllerTest.viewProductsTest" configurationId="JUnit" />
+    <history-entry file="ProductControllerTest_viewProductDetailsTest - 2017.01.07 at 09h 54m 25s.xml">
+      <configuration name="ProductControllerTest.viewProductDetailsTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="ProductControllerTest_viewProductsTest - 2017.01.07 at 09h 31m 10s.xml">
       <configuration name="ProductControllerTest.viewProductsTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="ProductControllerTest_viewProductsTest - 2017.01.07 at 09h 32m 56s.xml">
+      <configuration name="ProductControllerTest.viewProductsTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ProductControllerTest_viewProductsTest - 2017.01.07 at 09h 37m 31s.xml">
+      <configuration name="ProductControllerTest.viewProductsTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ProductControllerTest_viewProductsTest - 2017.01.07 at 09h 39m 52s.xml">
+      <configuration name="ProductControllerTest.viewProductsTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ProductControllerTest_viewProductsTest - 2017.01.07 at 09h 40m 42s.xml">
+      <configuration name="ProductControllerTest.viewProductsTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ProductControllerTest_viewProductsTest - 2017.01.07 at 09h 42m 21s.xml">
+      <configuration name="ProductControllerTest.viewProductsTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ProductControllerTest_viewProductsTest - 2017.01.07 at 09h 45m 47s.xml">
+      <configuration name="ProductControllerTest.viewProductsTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ProductControllerTest_viewProductsTest - 2017.01.07 at 09h 47m 46s.xml">
       <configuration name="ProductControllerTest.viewProductsTest" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -1523,7 +1587,8 @@
     <MESSAGE value="Fixed stock quantity change in productPurchase for &quot;add&quot; controller method" />
     <MESSAGE value="Added &quot;empty cart&quot; link to cart template" />
     <MESSAGE value="Began implementation of tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Began implementation of tests" />
+    <MESSAGE value="Implemented first ProductController test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented first ProductController test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1695,13 +1760,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/floriantoenjes/shop/product/ProductService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="20" column="26" lean-forward="false" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -1889,22 +1947,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/floriantoenjes/shop/product/ProductService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="20" column="26" lean-forward="false" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+          <folding>
+            <element signature="e#501#502#0" expanded="true" />
+            <element signature="e#553#554#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/floriantoenjes/shop/product/ProductController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state relative-caret-position="298">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/floriantoenjes/shop/product/ProductControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        <state relative-caret-position="179">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#924#925#0" expanded="true" />
-            <element signature="e#1008#1009#0" expanded="true" />
           </folding>
         </state>
       </provider>
