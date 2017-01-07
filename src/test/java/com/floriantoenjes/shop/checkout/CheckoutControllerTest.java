@@ -3,7 +3,6 @@ package com.floriantoenjes.shop.checkout;
 import com.floriantoenjes.shop.user.Role;
 import com.floriantoenjes.shop.user.User;
 import org.hibernate.Hibernate;
-import org.hibernate.annotations.Check;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,14 +12,12 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import static org.junit.Assert.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
@@ -40,6 +37,7 @@ public class CheckoutControllerTest {
         user.setId(1L);
         user.setRole(new Role("ROLE_USER"));
         SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(user, null));
+        Hibernate.initialize(user.getShippingAddresses());
 
         mockMvc = MockMvcBuilders.standaloneSetup(checkoutController)
                 .setViewResolvers(viewResolver)

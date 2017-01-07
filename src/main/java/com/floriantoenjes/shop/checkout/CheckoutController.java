@@ -13,11 +13,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 
 @Controller
 @RequestMapping("checkout")
 @Scope("request")
+@Transactional
 public class CheckoutController {
     @Autowired
     UserRepository userRepository;
