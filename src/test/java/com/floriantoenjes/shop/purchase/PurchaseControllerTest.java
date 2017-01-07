@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -17,10 +19,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Mockito.doCallRealMethod;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
@@ -29,13 +33,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class PurchaseControllerTest {
     private MockMvc mockMvc;
 
-    @Mock
+    @Autowired
     private ProductService productService;
 
-    @Mock
+
+    @Autowired
     private Purchase purchase;
 
-    @InjectMocks
+    @Autowired
     private PurchaseController purchaseController;
 
     @Before
@@ -51,7 +56,14 @@ public class PurchaseControllerTest {
 
     @Test
     public void addProductToCartTest() throws Exception {
+        Product product = new Product("Knife", 3.0, 20L);
+        productService.save(product);
 
+        mockMvc.perform(post("/purchase/add")
+                .param("id", "1")
+                .param("quantity", "1")
+        ).andExpect(redirectedUrl("/product/"));
+        assertEquals(purchase.getProductPurchases().size(), 1);
     }
 
     @Test
@@ -67,22 +79,7 @@ public class PurchaseControllerTest {
 
     @Test
     public void emptyCartTest() throws Exception {
-        Product product1 = new Product("Knife", 3.0, 20L);
-        product1.setId(1L);
-        ProductPurchase productPurchase1 = new ProductPurchase(product1, 5L);
-        List<ProductPurchase> productPurchases = new ArrayList<>(Arrays.asList(productPurchase1));
-        int productPurchasesSizeBefore = productPurchases.size();
-        purchase.setProductPurchases(productPurchases);
-        when(purchase.getProductPurchases()).thenReturn(productPurchases);
-        doCallRealMethod().when(purchase).setProductPurchases(new ArrayList<>());
-        when(productService.findOne(1L)).thenReturn(product1);
 
-        mockMvc.perform(get("/purchase/cart/empty"))
-                .andExpect(redirectedUrl("/purchase/cart"));
-
-        when(purchase.getProductPurchases()).thenCallRealMethod();
-        assertNotEquals(productPurchasesSizeBefore,
-                purchase.getProductPurchases().size());
     }
 
 }
