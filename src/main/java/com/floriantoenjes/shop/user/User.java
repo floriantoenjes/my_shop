@@ -8,6 +8,7 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -32,6 +33,12 @@ public class User extends BaseEntity implements UserDetails{
 
     public User() {
         shippingAddresses = new ArrayList<>();
+    }
+
+    public User(String username, String password) {
+        this();
+        this.username = username;
+        this.password = password;
     }
 
     @Override
