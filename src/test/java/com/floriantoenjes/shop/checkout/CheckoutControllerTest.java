@@ -28,7 +28,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class CheckoutControllerTest {
     private MockMvc mockMvc;
 
@@ -63,6 +62,7 @@ public class CheckoutControllerTest {
     }
 
     @Test
+    @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
     public void checkout1WithAddressRedirectsToCheckout2Page() throws Exception {
         User user = userService.findByUsername("user");
         Address address = new Address();
