@@ -56,7 +56,7 @@ public class PurchaseControllerTest {
 
     @Test
     public void addProductToCartTest() throws Exception {
-        Product product = new Product("Knife", 3.0, 20L);
+        Product product = mockProduct();
         productService.save(product);
 
         mockMvc.perform(post("/purchase/add")
@@ -79,7 +79,18 @@ public class PurchaseControllerTest {
 
     @Test
     public void emptyCartTest() throws Exception {
+        purchase.addProductPurchase(new ProductPurchase(mockProduct(), 5L));
+        int sizeBefore = purchase.getProductPurchases().size();
 
+        mockMvc.perform(get("/purchase/cart/empty"))
+                .andExpect(redirectedUrl("/purchase/cart"));
+        assertNotEquals(sizeBefore, purchase.getProductPurchases().size());
+    }
+
+    private Product mockProduct() {
+        Product product = new Product("Knife", 3.0, 20L);
+        product.setId(1L);
+        return product;
     }
 
 }
