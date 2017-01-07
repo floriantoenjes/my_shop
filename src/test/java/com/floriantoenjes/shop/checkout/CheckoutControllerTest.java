@@ -4,7 +4,6 @@ import com.floriantoenjes.shop.address.Address;
 import com.floriantoenjes.shop.user.Role;
 import com.floriantoenjes.shop.user.User;
 import com.floriantoenjes.shop.user.UserService;
-import org.hibernate.Hibernate;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,9 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
