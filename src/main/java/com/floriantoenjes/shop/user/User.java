@@ -34,6 +34,12 @@ public class User extends BaseEntity implements UserDetails{
         shippingAddresses = new ArrayList<>();
     }
 
+    public User(String username, String password) {
+        this();
+        this.username = username;
+        this.password = password;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return AuthorityUtils.createAuthorityList(role.getName());
