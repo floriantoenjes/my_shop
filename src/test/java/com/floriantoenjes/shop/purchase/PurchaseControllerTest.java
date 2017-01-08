@@ -45,8 +45,6 @@ public class PurchaseControllerTest {
                 .build();
     }
 
-    // ToDo: Add tests to ensure correct stock quantity
-
     @Test
     public void addProductToCartTest() throws Exception {
         Product product = mockProduct();
@@ -87,6 +85,7 @@ public class PurchaseControllerTest {
                 productService.findOne(1L).getStockQuantity());
     }
 
+    // ToDo: Add test to ensure correct stock quantity
     @Test
     public void emptyCartTest() throws Exception {
         purchase.addProductPurchase(new ProductPurchase(mockProduct(), 5L));

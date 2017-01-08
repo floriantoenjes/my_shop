@@ -1,2 +1,2 @@
 ## my_shop
-#### Just a simple e-commerce shop for learning purposes.
+##### A simple e-commerce shop I created for learning purposes.
