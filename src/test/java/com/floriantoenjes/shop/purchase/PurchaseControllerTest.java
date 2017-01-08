@@ -17,7 +17,6 @@ import static org.junit.Assert.assertNotEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -59,6 +58,8 @@ public class PurchaseControllerTest {
                 .andExpect(redirectedUrl("/product/"));
 
         assertEquals(purchase.getProductPurchases().size(), 1);
+        assertEquals(java.util.Optional.of(19L).get(),
+                productService.findOne(1L).getStockQuantity());
     }
 
     @Test
@@ -70,9 +71,10 @@ public class PurchaseControllerTest {
     @Test
     public void updateCartTest() throws Exception {
         Product product = mockProduct();
-        productService.save(product);
         Long quantityBefore = 3L;
         purchase.addProductPurchase(new ProductPurchase(product, quantityBefore));
+        product.setStockQuantity(product.getStockQuantity() - quantityBefore);
+        productService.save(product);
 
         mockMvc.perform(post("/purchase/update")
                 .param("productId", "1")
@@ -81,6 +83,8 @@ public class PurchaseControllerTest {
 
         assertEquals(java.util.Optional.of(10L).get(),
                 purchase.getProductPurchases().get(0).getQuantity());
+        assertEquals(java.util.Optional.of(10L).get(),
+                productService.findOne(1L).getStockQuantity());
     }
 
     @Test
