@@ -26,7 +26,7 @@ public class PurchaseController {
     private ProductService productService;
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String addProduct(@RequestParam("id") Long productId, @RequestParam("quantity") Long quantity,
+    public String addProduct(@RequestParam("id") Long productId, @RequestParam(value = "quantity" , defaultValue = "1") Long quantity,
                              RedirectAttributes redirectAttributes) {
         Product product = productService.findOne(productId);
         boolean alreadyInPurchase = false;
