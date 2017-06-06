@@ -20,10 +20,10 @@ import java.util.ArrayList;
 public class PurchaseController {
 
     @Autowired
-    Purchase purchase;
+    private Purchase purchase;
 
     @Autowired
-    ProductService productService;
+    private ProductService productService;
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String addProduct(@RequestParam("id") Long productId, @RequestParam("quantity") Long quantity,
